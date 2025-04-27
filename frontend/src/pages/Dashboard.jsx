@@ -91,7 +91,10 @@ const Dashboard = () => {
     fetch("http://localhost:8888/sql_inj/backend/logout.php", {
       method: "POST",
       credentials: "include",
-    }).then(() => localStorage.removeItem("username"), navigate("/"));
+    }).then(() => {
+      localStorage.removeItem("username");
+      navigate("/");
+    })
   };
 
   const stats = {

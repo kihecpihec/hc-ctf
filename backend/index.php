@@ -24,8 +24,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = $_POST['password'] ?? '';
     }
 
-    $query = "SELECT * FROM users WHERE (username = '$username') AND (password = MD5('$password'))";
+    $isInjection = strpos($username, "'") !== false || strpos($password, "'") !== false;
 
+    if ($isInjection && stripos($username, 'admin') !== false) {
+        echo json_encode(["success" => false, "message" => "NOPE"]);
+        exit();
+    }
+
+    $query = "SELECT * FROM users WHERE (username = '$username') AND (password = MD5('$password'))";
     $result = $conn->query($query);
 
     if ($result && $result->num_rows > 0) {
