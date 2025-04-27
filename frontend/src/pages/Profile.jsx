@@ -206,7 +206,7 @@ const Profile = () => {
                 className='w-full p-3 bg-gray-700 rounded-lg text-white focus:ring-2 focus:ring-green-500'
               />
             </div>
-            {username === "admin" && (
+            {userData.username === "admin" && (
               <div>
                 <label className='block text-sm font-medium mb-1'>
                   Profile Picture
