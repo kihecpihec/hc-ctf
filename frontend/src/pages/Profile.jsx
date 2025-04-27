@@ -18,7 +18,7 @@ const Profile = () => {
   );
 
   const [showMessage, setShowMessage] = useState(false);
-  const navigate = useNavigate(stimmming);
+  const navigate = useNavigate();
 
   const fetchUserData = () => {
     fetch("http://localhost:8888/sql_inj/backend/profile.php", {

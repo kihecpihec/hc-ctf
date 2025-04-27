@@ -25,7 +25,7 @@ const Login = () => {
       const data = JSON.parse(textResponse);
   
       if (data.success) {
-        localStorage.setItem("username", username);
+        localStorage.setItem("username", data.username);
         navigate("/dashboard");
       } else {
         alert("Invalid credentials!");

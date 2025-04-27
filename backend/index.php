@@ -24,15 +24,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = $_POST['password'] ?? '';
     }
 
-    $query = "SELECT * FROM users WHERE username = '$username' AND password = MD5('$password')";
+    $query = "SELECT * FROM users WHERE (username = '$username') AND (password = MD5('$password'))";
 
     $result = $conn->query($query);
 
     if ($result && $result->num_rows > 0) {
-        $_SESSION['username'] = $username;
-        echo json_encode(["success" => true, "message" => "Welcome, $username!"]);
+        $row = $result->fetch_assoc();
+        $_SESSION['username'] = $row['username'];
+        echo json_encode(["success" => true, "message" => "Welcome, {$row['username']}!", "username" => $row['username']]);
     } else {
         echo json_encode(["success" => false, "message" => "Invalid login"]);
-    }
+    } 
 }
 ?>
