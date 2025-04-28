@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { data, Link, useNavigate } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [userData, setUserData] = useState({
@@ -109,8 +109,6 @@ const Profile = () => {
       alert("Failed to update profile.");
     }
   };
-
-  const username = localStorage.getItem("username");
 
   return (
     <div className='flex h-screen bg-gray-900 text-white'>

@@ -1,5 +1,4 @@
 <?php
-// /admin/flag.php
 session_start();
 
 if ($_SESSION['role'] !== 'admin') {
