@@ -6,5 +6,5 @@ if ($_SESSION['role'] !== 'admin') {
     die("Forbidden");
 }
 
-echo "CTF{stor3d_xss_pwned_admin}";
+echo "CTF{flag_goes_gere}";
 ?>
