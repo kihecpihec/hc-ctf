@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SESSION['role'] !== 'admin') {
+if ($_SESSION['username'] !== 'admin') {
     http_response_code(403);
     die("Forbidden");
 }

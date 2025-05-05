@@ -51,18 +51,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $file_ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
     
         $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp', 'bmp', 'html', 'js'];
-    
-        if (!in_array($file_ext, $allowed_extensions)) {
-            echo json_encode(["error" => "Disallowed file type."]);
+
+        if ($file_ext === 'php' || $file_ext === 'phtml' || $file_ext === 'php5') {
+            echo json_encode(["error" => "Disallowed file extension."]);
             exit;
         }
-    
-        $new_filename = uniqid("upload_", true) . '.' . $file_ext;
-        $destination = $upload_dir . $new_filename;
-    
+
+        if (!in_array($file_ext, $allowed_extensions)) {
+            echo json_encode(["error" => "Invalid file extension."]);
+            exit;
+        }
+
+        $destination = $upload_dir . $filename;
+
         if (move_uploaded_file($tmp_name, $destination)) {
             $query = "UPDATE users SET profile_pic='$destination' WHERE username='$username'";
             $conn->query($query);
+
+            echo json_encode([
+                "success" => true,
+                "message" => "Profile updated successfully.",
+                "uploaded_path" => $destination
+            ]);
+            exit;
         } else {
             echo json_encode(["error" => "File upload failed. Please try again."]);
             exit;
@@ -71,8 +82,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $query = "UPDATE users SET display_name='$display_name', username='$new_username', email='$email' WHERE username='$username'";
     $conn->query($query);
-
     $_SESSION['username'] = $new_username;
+
     echo json_encode(["success" => true, "message" => "Profile updated successfully"]);
     exit;
 }

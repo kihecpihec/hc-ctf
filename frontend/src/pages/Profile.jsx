@@ -110,6 +110,8 @@ const Profile = () => {
     }
   };
 
+  const username = localStorage.getItem("username")
+
   return (
     <div className='flex h-screen bg-gray-900 text-white'>
 
