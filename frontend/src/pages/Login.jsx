@@ -13,7 +13,7 @@ const Login = () => {
     formData.append("username", username);
     formData.append("password", password);
 
-    const response = await fetch("http://localhost:8888/sql_inj/backend/index.php", {
+    const response = await fetch("http://localhost:8888/Dashboard/backend/index.php", {
       method: "POST",
       body: formData,
       credentials: "include",

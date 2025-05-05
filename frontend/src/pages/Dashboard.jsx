@@ -72,7 +72,7 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:8888/sql_inj/backend/profile.php", {
+    fetch("http://localhost:8888/Dashboard/backend/profile.php", {
       method: "GET",
       credentials: "include",
     })
@@ -88,7 +88,7 @@ const Dashboard = () => {
   }, [navigate]);
 
   const handleLogout = () => {
-    fetch("http://localhost:8888/sql_inj/backend/logout.php", {
+    fetch("http://localhost:8888/Dashboard/backend/logout.php", {
       method: "POST",
       credentials: "include",
     }).then(() => {

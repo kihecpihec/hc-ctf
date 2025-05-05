@@ -17,7 +17,7 @@ const SubmitReport = () => {
 
     try {
       const res = await fetch(
-        "http://localhost:8888/sql_inj/backend/submit_report.php",
+        "http://localhost:8888/Dashboard/backend/submit_report.php",
         {
           method: "POST",
           body: form,
@@ -41,7 +41,7 @@ const SubmitReport = () => {
   };
 
   const handleLogout = () => {
-    fetch("http://localhost:8888/sql_inj/backend/logout.php", {
+    fetch("http://localhost:8888/Dashboard/backend/logout.php", {
       method: "POST",
       credentials: "include",
     }).then(() => {

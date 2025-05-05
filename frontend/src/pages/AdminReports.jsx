@@ -6,7 +6,7 @@ const AdminReports = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:8888/sql_inj/backend/reports.php", {
+    fetch("http://localhost:8888/Dashboard/backend/reports.php", {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -14,7 +14,7 @@ const AdminReports = () => {
   }, []);
 
   const handleLogout = () => {
-    fetch("http://localhost:8888/sql_inj/backend/logout.php", {
+    fetch("http://localhost:8888/Dashboard/backend/logout.php", {
       method: "POST",
       credentials: "include",
     }).then(() => {
@@ -94,7 +94,7 @@ const AdminReports = () => {
               {r.file_path && (
                 <div className='border border-gray-700 p-2 rounded bg-black'>
                   <iframe
-                    src={`http://localhost:8888/sql_inj/backend/${r.file_path}`}
+                    src={`http://localhost:8888/Dashboard/backend/${r.file_path}`}
                     title='report'
                     width='100%'
                     height='200'

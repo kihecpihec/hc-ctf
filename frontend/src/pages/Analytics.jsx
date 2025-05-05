@@ -105,7 +105,7 @@ const Analytics = () => {
   }, []);
 
   const handleLogout = () => {
-    fetch("http://localhost:8888/sql_inj/backend/logout.php", {
+    fetch("http://localhost:8888/Dashboard/backend/logout.php", {
       method: "POST",
       credentials: "include",
     }).then(() => {

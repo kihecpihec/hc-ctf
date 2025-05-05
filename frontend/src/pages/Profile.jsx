@@ -14,14 +14,14 @@ const Profile = () => {
   const [newEmail, setNewEmail] = useState("");
   const [newProfilePic, setNewProfilePic] = useState(null);
   const [previewPic, setPreviewPic] = useState(
-    "http://localhost:8888/sql_inj/backend/uploads/default.jpg"
+    "http://localhost:8888/Dashboard/backend/uploads/default.jpg"
   );
 
   const [showMessage, setShowMessage] = useState(false);
   const navigate = useNavigate();
 
   const fetchUserData = () => {
-    fetch("http://localhost:8888/sql_inj/backend/profile.php", {
+    fetch("http://localhost:8888/Dashboard/backend/profile.php", {
       method: "GET",
       credentials: "include",
     })
@@ -36,8 +36,8 @@ const Profile = () => {
           setNewEmail(data.email);
           setPreviewPic(
             data.profile_pic
-              ? `http://localhost:8888/sql_inj/backend/${data.profile_pic}`
-              : "http://localhost:8888/sql_inj/backend/uploads/default.jpg"
+              ? `http://localhost:8888/Dashboard/backend/${data.profile_pic}`
+              : "http://localhost:8888/Dashboard/backend/uploads/default.jpg"
           );
         }
       })
@@ -45,7 +45,7 @@ const Profile = () => {
   };
 
   const handleLogout = () => {
-    fetch("http://localhost:8888/sql_inj/backend/logout.php", {
+    fetch("http://localhost:8888/Dashboard/backend/logout.php", {
       method: "POST",
       credentials: "include",
     }).then(() => {
@@ -76,7 +76,7 @@ const Profile = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8888/sql_inj/backend/profile.php",
+        "http://localhost:8888/Dashboard/backend/profile.php",
         {
           method: "POST",
           body: formData,
@@ -96,7 +96,7 @@ const Profile = () => {
 
         if (data.user?.profile_pic) {
           setPreviewPic(
-            `http://localhost:8888/sql_inj/backend/${data.user.profile_pic}`
+            `http://localhost:8888/Dashboard/backend/${data.user.profile_pic}`
           );
         }
         setShowMessage(true);
