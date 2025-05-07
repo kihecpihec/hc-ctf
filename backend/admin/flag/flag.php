@@ -6,5 +6,5 @@ if ($_SESSION['username'] !== 'admin') {
     die("Forbidden");
 }
 
-echo "CTF{flag_goes_gere}";
+echo "CTF{r1gged_d4sh_co0k13_c4sh}";
 ?>
