@@ -30,11 +30,10 @@ def run_bot():
 
         driver.get(url_report)
         print(f"[ADMIN BOT] Checked reports at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-        time.sleep(5)
+        time.sleep(3)
 
     finally:
         driver.quit()
 
-while True:
+if __name__ == "__main__":
     run_bot()
-    time.sleep(10)

@@ -53,8 +53,10 @@ if (!$stmt) {
 $stmt->bind_param("ssss", $submitted_by, $title, $description, $file_path);
 
 if ($stmt->execute()) {
+    $cmd = "cd ../bot && nohup ./venv/bin/python3 admin_bot.py > /dev/null 2>&1 &";
+    shell_exec($cmd);
+
     echo json_encode(["success" => true, "message" => "Report submitted"]);
-} else {
-    echo json_encode(["error" => "Failed to submit report."]);
+    exit;
 }
 ?>
